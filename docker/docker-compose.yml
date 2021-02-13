@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+  app:
+    container_name: pytorch-tutorial-app
+    image: pytorch-tutorial_app:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: ${ENV}
+    environment:
+      - SHELL=/bin/bash
+    tty: true
+    runtime: nvidia

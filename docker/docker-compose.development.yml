@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+  app:
+    container_name: pytorch-tutorial-app-dev
+    image: pytorch-tutorial_app-dev:latest
+    volumes:
+      - ../:/root/pytorch-tutorial/
+      - venv:/root/pytorch-tutorial/.venv/
+      - jupyter-config:/root/.jupyter/
+      - ~/.ssh/:/root/.ssh/:ro
+    ports:
+      - ${port:-8888}:8888
+volumes:
+  venv:
+    external:
+      name: venv-pytorch-tutorial
+  jupyter-config:
+    external:
+      name: jupyter-config

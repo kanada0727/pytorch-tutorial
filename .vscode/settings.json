@@ -1,0 +1,29 @@
+{
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.insertSpaces": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black",
+    "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+    "python.terminal.activateEnvironment": true, // activate poetry on starting shell
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "remote.SSH.localServerDownload": "always" // cache extension locally and send it on starting container; for speedup
+}
