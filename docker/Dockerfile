@@ -46,7 +46,7 @@ COPY --from=node:15.6-buster-slim /usr/local/lib/node_modules/ /usr/local/lib/no
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 ###### --- install basic commands ---
-RUN apt update && apt install -y procps git vim curl
+RUN apt update && apt install -y procps git vim curl tig
 
 ###### --- setting project path ---
 ###### NOTE: put this code in the end to share cache with other projects
