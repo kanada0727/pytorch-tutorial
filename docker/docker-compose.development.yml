@@ -13,6 +13,22 @@ services:
       - ${DATASET_PATH}:/root/pytorch-tutorial/datasets/
     ports:
       - ${port:-8888}:8888
+
+  tensorboard:
+    container_name: tensorboard
+    image: tensorboard:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.tensorboard
+    ports:
+      - 7000:7000
+    environment:
+      - SHELL=/bin/bash
+    volumes:
+      - ${LOG_PATH}:/root/logs
+    tty: true
+    command: tensorboard --port 7000 --logdir /root/logs --bind_all
+
 volumes:
   venv:
     external:
