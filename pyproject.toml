@@ -4,6 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["kanada0727 <kanada@pcl.cs.waseda.ac.jp>"]
 
+[tool.black]
+line-length=120
+
 [tool.taskipy.tasks]
 jupyter= "poetry run jupyter lab --allow-root --ip 0.0.0.0"
 jupyter-update-password= "poetry run jupyter server password"
