@@ -8,6 +8,8 @@ services:
       - venv:/root/pytorch-tutorial/.venv/
       - jupyter-config:/root/.jupyter/
       - ~/.ssh/:/root/.ssh/:ro
+      - ${LOG_PATH}:/root/pytorch-tutorial/logs
+      - ${DATASET_PATH}:/root/pytorch-tutorial/datasets/
     ports:
       - ${port:-8888}:8888
 volumes:

@@ -1,3 +1,5 @@
+include .env
+export
 export PROJECT_NAME=pytorch-tutorial
 export ENV?=development
 
@@ -23,7 +25,10 @@ setup-development: build create-volumes up poetry-install-dev install-labextensi
 
 poetry-install-dev:
 	$(dc-exec) poetry install
-
+	# NOTE: poetry can't deal with multiple packages with local version, so use pip to install torchvision
+	# cf. https://github.com/python-poetry/poetry/issues/2543
+	poetry run pip install torchvision===0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
+ 
 install-labextensions:
 	$(dc-exec) sh install_labextensions
 
