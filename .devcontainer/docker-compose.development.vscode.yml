@@ -3,3 +3,4 @@ services:
   app:
     container_name: pytorch-tutorial-app-dev-vscode
     command: /bin/sh -c "while sleep 1000; do :; done"
+    runtime: nvidia
