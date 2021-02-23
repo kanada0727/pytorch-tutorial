@@ -12,6 +12,9 @@
     "python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+    ],
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "${workspaceFolder}/.venv/bin/black",
@@ -19,5 +22,11 @@
     "python.terminal.activateEnvironment": true, // activate poetry on starting shell
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 500,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.ipynb_checkpoints": true,
+        "**/.venv": true,
+        "**/__pycache__": true,
+    },
     "remote.SSH.localServerDownload": "always" // cache extension locally and send it on starting container; for speedup
 }
