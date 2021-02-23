@@ -76,4 +76,4 @@ poetry run python -m pytorch_tutorial.train tag=experiment-1 hparams.batch_size=
 ```
 
 ### visualize training logs
-see [tensorboard notebook](pytorch_tutorial/notebooks/tensorboard.ipynb)
+see [tensorboard notebook](notebooks/tensorboard.ipynb)
