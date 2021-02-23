@@ -1,0 +1,44 @@
+log_path: logs/MNIST/
+project: with_pl
+tag: ???
+hparams:
+  random_seed: 1
+  batch_size: 128
+  n_epochs: 3
+  optimizer:
+    _target_: torch.optim.SGD
+    lr: 0.01
+    momentum: 0.5
+  model: 
+    _target_: pytorch_tutorial.models.simple_cnn.SimpleCNN
+trainer:
+  _target_: pytorch_lightning.Trainer
+  default_root_dir: "./"
+  max_epochs: ${hparams.n_epochs}
+  benchmark: True
+  deterministic: True
+  gpus:
+    - 0
+  log_every_n_steps: 100
+  flush_logs_every_n_steps: 1000
+  terminate_on_nan: True
+  callbacks:
+    - _target_: pytorch_lightning.callbacks.ModelCheckpoint
+      monitor: val_accuracy
+      filename: '{epoch:04d}-{val_accuracy:.2f}'
+      save_top_k: 2
+      save_weights_only: True
+  logger:
+    _target_: pytorch_lightning.loggers.TensorBoardLogger
+    save_dir: ${trainer.default_root_dir} 
+    name: train_logs
+data_loader:
+  data_path: datasets/
+  num_workers: 8
+  batch_size:
+    train: ${hparams.batch_size}
+    val: 64
+    test: 1000
+hydra:
+  run:
+    dir: ./${log_path}/${project}/${tag}
